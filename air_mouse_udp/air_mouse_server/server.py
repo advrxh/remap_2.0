@@ -5,8 +5,8 @@ import time
 
 UDP_PORT = 4210
 
-SENS_X = 0.001
-SENS_Y = 0.001
+SENS_X = 0.01
+SENS_Y = 0.01
 
 monitor = screeninfo.get_monitors()[0]
 SCREEN_WIDTH, SCREEN_HEIGHT = monitor.width, monitor.height
@@ -26,6 +26,8 @@ while True:
         gyro = {}
         for i in data:
             gyro[i.split(":")[0]] = int(i.split(":")[1])
+
+        print(gyro)
 
         dh = -1 * gyro["gx"] * SENS_X
         dw = -1 * gyro["gz"] * SENS_Y

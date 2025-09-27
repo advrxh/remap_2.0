@@ -8,10 +8,10 @@
 MPU6050 mpu;
 WiFiUDP udp;
 
-const char *ssid = "Airtel_ZEPTO";
-const char *password = "Ks@12345678";
+const char *ssid = "MECAP-WPA2";
+const char *password = "8b140b20e7";
 
-const char *serverIP = "192.168.1.12"; 
+const char *serverIP = "192.168.9.255"; 
 const int serverPort = 4210;
 
 void setup()
@@ -36,10 +36,11 @@ void setup()
 
 void loop()
 {
-  int16_t gx, gz;
-  mpu.getMotion6(NULL, NULL, NULL, &gx, NULL, &gz);
+  int16_t gx, gz, gy, ax, az, ay;
+  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
   String data = "gx:" + String(gx) + ";gz:" + String(gz);
+
 
   udp.beginPacket(serverIP, serverPort);
   udp.write(data.c_str());

@@ -9,8 +9,8 @@
 MPU6050 mpu;
 ESP8266WebServer server(PORT);
 
-const char* ssid = "Airtel_ZEPTO";
-const char* password = "Ks@12345678";
+const char* ssid = "MECAP-WPA2";
+const char* password = "8b140b20e7";
 
 void setup() {
   Serial.begin(BAUD_RATE);
